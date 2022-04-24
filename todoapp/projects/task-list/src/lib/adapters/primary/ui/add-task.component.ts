@@ -3,12 +3,12 @@ import { Component, ViewEncapsulation, ChangeDetectionStrategy, Inject } from '@
 import { ADDS_TASK_DTO, AddsTaskDtoPort } from '../../../application/ports/secondary/adds-task.dto-port';
 
 @Component({
-    selector: 'lib-task-list',
-    templateUrl: './task-list.component.html',
+    selector: 'lib-add-task',
+    templateUrl: './add-task.component.html',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TaskListComponent {
+export class AddTaskComponent {
     readonly addTask: FormGroup = new FormGroup({
         taskDescription: new FormControl()
     });
