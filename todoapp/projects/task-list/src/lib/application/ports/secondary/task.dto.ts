@@ -1,3 +1,4 @@
 export interface TaskDTO {
-  readonly taskDescription: string;
+  readonly description: string;
+  readonly id: string;
 }

@@ -1,12 +1,8 @@
-// import { DatePipe, formatDate } from '@angular/common';
-import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
-// import { registerLocaleData } from '@angular/common';
-// import localeES from "@angular/common/locales/es";
-// registerLocaleData(localeES, "es");
-
-
-
-// this.todoForm.controls.todoDate.setValue(formatDate(this.todo.targetDate, 'yyyy-MM-dd', 'en-US'));
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, Inject } from '@angular/core';
+import { Observable } from 'rxjs';
+import { TaskDTO } from '../../../application/ports/secondary/task.dto';
+import { GETS_ONE_TASK_DTO, GetsOneTaskDtoPort } from '../../../application/ports/secondary/gets-one-task.dto-port';
+import { switchMap } from 'rxjs/operators';
 
 
 @Component({
@@ -16,18 +12,19 @@ import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskListComponent {
-    // today: Date = new Date();
-    // pipe = new DatePipe('en-US');
-    // todayWithPipe = 'null';
-    // ngOnInit(): void {
-    //     this.todayWithPipe = this.pipe.transform(Date.now(), 'dd/MM/yyyy');
+    // task$: Observable<TaskDTO> = this._getsOneTaskDto
+    //     .getOne()
+    //     .pipe(switchMap(data =>
+    //         this._getsOneTaskDto.getOne(data.description)));
+
+
+    // constructor(@Inject(GETS_ONE_TASK_DTO) private _getsOneTaskDto: GetsOneTaskDtoPort) {
     // }
 
-    // format = 'EEE, d, MMM';
-    // myDate = '2019-06-29';
-    // locale = 'en-US';
-    // formattedDate = formatDate(this.myDate, this.format, this.locale);
+
 
     today: number = Date.now();
+
+
 
 }
