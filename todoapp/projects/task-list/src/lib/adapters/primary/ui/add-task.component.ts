@@ -16,12 +16,12 @@ export class AddTaskComponent {
     constructor(@Inject(ADDS_TASK_DTO) private _addsTaskDto: AddsTaskDtoPort) {
     }
 
-    onAddTaskSubmited(taskList: FormGroup): void {
-        if (taskList.invalid) {
+    onAddTaskSubmited(addTask: FormGroup): void {
+        if (addTask.invalid) {
             return;
         }
         this._addsTaskDto.add({
-            taskDescription: taskList.get('taskDescription')?.value
+            taskDescription: addTask.get('taskDescription')?.value
         });
         this.addTask.reset();
     }

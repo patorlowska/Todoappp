@@ -11,7 +11,11 @@
     <!-- <p>The time is {{today | date:'h:mm a z'}}</p> -->
 </div>
 
-
+<!-- 
 <div>
     <h3>{{task$.description}}</h3>
-</div>
+</div> -->
+<ul>
+    <li *ngFor="let task of tasks$ | async">{{task.taskDescription}}</li>
+
+</ul>
