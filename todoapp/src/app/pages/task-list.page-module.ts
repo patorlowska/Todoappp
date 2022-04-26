@@ -5,6 +5,7 @@ import { TaskListPage } from './task-list.page';
 import { FirebaseTaskListServiceModule } from '../../../projects/task-list/src/lib/adapters/secondary/infrastructure/firebase-task-list.service-module';
 import { AddTaskComponentModule } from '../../../projects/task-list/src/lib/adapters/primary/ui/add-task.component-module';
 import { TaskListComponentModule } from '../../../projects/task-list/src/lib/adapters/primary/ui/task-list.component-module';
+// import { REMOVES_TASK_DTO } from 'projects/task-list/src/lib/application/ports/secondary/removes-task.dto-port';
 
 @NgModule({
   imports: [CommonModule,
@@ -16,11 +17,17 @@ import { TaskListComponentModule } from '../../../projects/task-list/src/lib/ada
     ]),
     AddTaskComponentModule,
     FirebaseTaskListServiceModule,
-    TaskListComponentModule
+    TaskListComponentModule,
   ],
   declarations: [TaskListPage],
-  providers: [],
+  providers: [
+    // {
+    //   provide: REMOVES_TASK_DTO,
+    //   useValue: {},
+    // } - chyba zbędne
+  ],
   exports: []
 })
+
 export class TaskListPageModule {
 }

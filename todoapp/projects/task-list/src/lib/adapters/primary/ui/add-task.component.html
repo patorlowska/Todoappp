@@ -1,7 +1,6 @@
 <form [formGroup]="addTask" (ngSubmit)="onAddTaskSubmited(addTask)">
     <input type="text" formControlName="taskDescription" placeholder="Task Description">
     <button type="submit" value="Submit">Add task</button>
-
 </form>
 
 <button value="click" type="click"><a routerLink="/home">Cancel</a></button>

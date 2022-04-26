@@ -1,5 +1,10 @@
 import { FormGroup, FormControl } from '@angular/forms';
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, Inject } from '@angular/core';
+import {
+    Component,
+    ViewEncapsulation,
+    ChangeDetectionStrategy,
+    Inject
+} from '@angular/core';
 import { ADDS_TASK_DTO, AddsTaskDtoPort } from '../../../application/ports/secondary/adds-task.dto-port';
 
 @Component({
@@ -13,8 +18,10 @@ export class AddTaskComponent {
         taskDescription: new FormControl()
     });
 
-    constructor(@Inject(ADDS_TASK_DTO) private _addsTaskDto: AddsTaskDtoPort) {
-    }
+    constructor(
+        @Inject(ADDS_TASK_DTO)
+        private _addsTaskDto: AddsTaskDtoPort
+    ) { }
 
     onAddTaskSubmited(addTask: FormGroup): void {
         if (addTask.invalid) {

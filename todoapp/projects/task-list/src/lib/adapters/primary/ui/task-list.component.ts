@@ -1,12 +1,15 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, Inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import {
+    Component,
+    ViewEncapsulation,
+    ChangeDetectionStrategy,
+    Inject,
+    Injectable
+} from '@angular/core';
+import { map, Observable } from 'rxjs';
 import { TaskDTO } from '../../../application/ports/secondary/task.dto';
 import { GETS_ALL_TASK_DTO, GetsAllTaskDtoPort } from '../../../application/ports/secondary/gets-all-task.dto-port';
+import { REMOVES_TASK_DTO, RemovesTaskDtoPort } from '../../../application/ports/secondary/removes-task.dto-port';
 
-// import { Observable } from 'rxjs';
-// import { TaskDTO } from '../../../application/ports/secondary/task.dto';
-// import { GETS_ONE_TASK_DTO, GetsOneTaskDtoPort } from '../../../application/ports/secondary/gets-one-task.dto-port';
-// import { switchMap } from 'rxjs/operators';
 
 
 @Component({
@@ -15,24 +18,53 @@ import { GETS_ALL_TASK_DTO, GetsAllTaskDtoPort } from '../../../application/port
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
+
+// @Injectable(
+//     {
+//         providedIn: 'root'
+//     }
+// ) -- chyba zbędne
+
 export class TaskListComponent {
 
     today: number = Date.now();
+    taskToRemove: string = '';
 
-    tasks$: Observable<TaskDTO[]> = this._getsAllTaskDto.getAll();
+    tasks$: Observable<TaskDTO[]> = this._getsAllTaskDto.getAll()
+    // .pipe(
+    //     map((task: TaskDTO[]) =>
+    //         task.sort((a, b) => a.taskDescription.localeCompare(b.taskDescription))
+    //     )
 
-    constructor(@Inject(GETS_ALL_TASK_DTO) private _getsAllTaskDto: GetsAllTaskDtoPort) {
+    // NIE DZIAŁA sortowanie !! --> błąd local compare ?
+    // );
+
+    constructor(
+        @Inject(GETS_ALL_TASK_DTO)
+        private _getsAllTaskDto: GetsAllTaskDtoPort,
+        @Inject(REMOVES_TASK_DTO)
+        private _removesTaskDto: RemovesTaskDtoPort) { }
+
+
+    // Nie działa delete nie łapie żadnej funckji brak wyrzucanego błedu ??
+    onDeleteTaskClicked(): void {
+        this._removesTaskDto.remove(this.taskToRemove);
     }
 
+    takeIdTaskToDelete(task: TaskDTO): void {
+        this.taskToRemove = task.id;
+    }
 
+    // Guzik bajer - add task po kliknieciu znika - DZIAŁA!! 
+    onChangeClicked(): void {
+        let buttonOfChange = document.getElementById('buttonOfChange');
+        if (buttonOfChange != null) {
+            buttonOfChange.style.display = 'block';
+        }
 
-
-
-
-    // task$: Observable<TaskDTO> = this._getsOneTaskDto
-    //     .getOne()
-    //     .pipe(switchMap(data =>
-    //         this._getsOneTaskDto.getOne(data.description)));
-    // constructor(@Inject(GETS_ONE_TASK_DTO) private _getsOneTaskDto: GetsOneTaskDtoPort) {
-    // }
+        let change = document.getElementById('changeToForm');
+        if (change != null) {
+            change.style.display = 'none';
+        }
+    }
 }

@@ -1,4 +1,8 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import {
+    Component,
+    ViewEncapsulation,
+    ChangeDetectionStrategy
+} from '@angular/core';
 
 @Component({
     selector: 'app-home-page',
