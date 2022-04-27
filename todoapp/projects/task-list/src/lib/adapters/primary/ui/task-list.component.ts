@@ -5,7 +5,7 @@ import {
     Inject,
     Injectable
 } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { TaskDTO } from '../../../application/ports/secondary/task.dto';
 import { GETS_ALL_TASK_DTO, GetsAllTaskDtoPort } from '../../../application/ports/secondary/gets-all-task.dto-port';
 import { REMOVES_TASK_DTO, RemovesTaskDtoPort } from '../../../application/ports/secondary/removes-task.dto-port';
@@ -31,7 +31,14 @@ export class TaskListComponent {
     taskToRemove: string = '';
 
     tasks$: Observable<TaskDTO[]> = this._getsAllTaskDto.getAll()
-    // .pipe(
+        .pipe(map((task: TaskDTO[]) =>
+            task.sort((a, b) => (a.sort) - (b.sort))
+        )
+
+        );//Dalej NIE dziala sort !!!!
+
+
+
     //     map((task: TaskDTO[]) =>
     //         task.sort((a, b) => a.taskDescription.localeCompare(b.taskDescription))
     //     )
@@ -55,6 +62,7 @@ export class TaskListComponent {
     onDeleteTaskClicked(task: TaskDTO): void {
         this._removesTaskDto.remove(this.taskToRemove + task.id);
         console.log(task)
+
     }
 
     takeIdTaskToDelete(taskId: string): void {
@@ -63,7 +71,30 @@ export class TaskListComponent {
         console.log(taskId)
     }
 
+
+    //     onClickedAlert(message: string, type:string): void {
+    //     let alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+    //     let alertTrigger = document.getElementById('liveAlertBtn');
+    //     .alert(message + type) => {
+    //         var wrapper = document.createElement('div')
+    //         wrapper.innerHTML = 
+    //         '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>',
+
+    //        alertPlaceholder.append(wrapper),
+
+    //         if (alertTrigger) {
+    //             alertTrigger.addEventListener('click', function () {
+    //                 alert('Nice, you triggered this alert message!', 'success')
+    //             })
+    //             console.log(alertTrigger)
+    //         }
+    //     }
+    // }
+
+
+
 }
+
 
 
 // próba podejścia do alerta

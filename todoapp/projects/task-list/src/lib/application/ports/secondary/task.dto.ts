@@ -1,5 +1,5 @@
 export interface TaskDTO {
-  taskSort: number;
+  readonly sort: number;
   readonly taskDescription: string;
   readonly id: string;
 }

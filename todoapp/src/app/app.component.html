@@ -3,11 +3,16 @@
 </div>
 
 
+<div class="container container-fluid">
+  <div class="text-uppercase d-flex align-items-center ">
+    <div class="fs-1 fw-bold me-5">TODAY </div>
+    <div class="fs-6 fw-light align-middle">{{today | date:'EEE, d, MMM'}}</div>
+
+  </div>
+  <hr class="border border-2 rounded" style="margin-top:20px; margin-bottom: 20px;">
+</div>
+
 
 <div class="container">
-  <div class="text-uppercase">
-    <h4>TODAY</h4> {{today | date:'EEE, d, MMM'}}
-    <hr class="border border-2 rounded" style="margin-top:20px; margin-bottom: 20px;">
-  </div>
   <router-outlet></router-outlet>
 </div>

@@ -1,20 +1,20 @@
-<div class="container">
+<div class="container container-fluid">
     <div class="form-group">
         <ul *ngFor="let task of tasks$ | async">
 
             <li class="row">
-                <div class="col">
+                <div class="col col-8">
 
                     <input class="form-check-input rounded-circle pointer text-decoration-line-through" type="checkbox"
                         name="flexRadioDefault" [value]="['{{task.id}}']">
-                    <label class="form-check-label strikethrough" for="{{task.id}}">
+                    <label class="form-check-label striketrough" for="{{task.id}}">
                         {{task.taskDescription}}
                     </label>
 
                 </div>
-                <div class="col">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary btn btn-light" type="button" id="dropdownMenuButton1"
+                <div class="col col-4 ">
+                    <div class="dropdown d-flex justify-content-end">
+                        <button class="btn btn-light bg-transparent border-0" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             ...
                         </button>
@@ -36,7 +36,7 @@
 </div>
 
 
-<div class="container">
+<div class="container container-fluid">
     <!-- Modal -->
     <div *ngFor="let task of tasks$ | async" class="modal fade" id="exampleModal" tabindex="-1"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -59,3 +59,25 @@
         </div>
     </div>
 </div>
+<!-- 
+<div id="liveAlertPlaceholder"></div>
+<button type="button" class="btn btn-primary" id="liveAlertBtn" (click)="onClickedAlert()">Show live alert</button>
+
+<script>alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+    var alertTrigger = document.getElementById('liveAlertBtn')
+
+    function alert(message, type) {
+        var wrapper = document.createElement('div')
+        wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+
+        alertPlaceholder.append(wrapper)
+    }
+
+    if (alertTrigger) {
+        alertTrigger.addEventListener('click', function () {
+            alert('Nice, you triggered this alert message!', 'success')
+        })
+        console.log(alertTrigger)
+    }
+
+</script> -->
