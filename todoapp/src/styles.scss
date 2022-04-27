@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+
+input[type=checkbox]:checked+label.striketrough {
+    text-decoration: line-through;
+}
+
+.pointer:hover {
+    cursor: pointer;
+}

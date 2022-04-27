@@ -1,6 +1,42 @@
-<form [formGroup]="addTask" (ngSubmit)="onAddTaskSubmited(addTask)">
-    <input type="text" formControlName="taskDescription" placeholder="Task Description">
-    <button type="submit" value="Submit">Add task</button>
-</form>
+<p>
+    <!-- <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+        aria-controls="collapseExample">
+        Link with href
+    </a> -->
+    <button class="btn btn-primary" style="background-color: #C29FFA; border: 1px solid #C29FFA;" type="button"
+        data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false"
+        aria-controls="collapseExample">
+        Add task
+    </button>
 
-<button value="click" type="click"><a routerLink="/home">Cancel</a></button>
+    <!-- Button hide after click - to tylko bajer na później - działa! -->
+    <!-- <button id="changeToForm" (click)="onChangeClicked()" class="btn text-white" href="#collapseExample"
+        style="background-color: #7749F8; border: 1px solid #7749F8;" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Add Task
+    </button> -->
+</p>
+
+
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+        <form [formGroup]="addTask" (ngSubmit)="onAddTaskSubmited(addTask)">
+            <input type="text" formControlName="taskDescription" placeholder="Write your message here">
+
+            <div class="d-grid gap-2 d-md-block d-inline">
+                <button id="changeToForm" (click)="onChangeClicked()" class="btn text-white" href="#collapseExample"
+                    style="background-color: #7749F8; border: 1px solid #7749F8;" type="submit"
+                    data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false"
+                    aria-controls="collapseExample">
+                    Add Task
+                </button>
+                <button style="background-color: #FFFFFF; border: 1px solid #6C757D; border-radius: 4px;" class="btn"
+                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false"
+                    aria-controls="collapseExample">
+                    Cancel
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>

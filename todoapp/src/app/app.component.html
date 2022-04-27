@@ -2,6 +2,12 @@
   <lib-nav></lib-nav>
 </div>
 
+
+
 <div class="container">
+  <div class="text-uppercase">
+    <h4>TODAY</h4> {{today | date:'EEE, d, MMM'}}
+    <hr class="border border-2 rounded" style="margin-top:20px; margin-bottom: 20px;">
+  </div>
   <router-outlet></router-outlet>
 </div>

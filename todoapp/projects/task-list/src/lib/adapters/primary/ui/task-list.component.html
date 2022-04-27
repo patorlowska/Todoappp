@@ -1,50 +1,49 @@
-<div>
-    <h4>TODAY </h4>{{today | date:'EEE, d, MMM'}}
-    <hr class="border border-2 rounded" style="margin-top:20px; margin-bottom: 20px;">
-</div>
-
 <div class="container">
-    <div>
-        <ul>
-            <div class="row">
-                <li *ngFor="let task of tasks$ | async">
-                    <div class="col">
+    <div class="form-group">
+        <ul *ngFor="let task of tasks$ | async">
+
+            <li class="row">
+                <div class="col">
+
+                    <input class="form-check-input rounded-circle pointer text-decoration-line-through" type="checkbox"
+                        name="flexRadioDefault" [value]="['{{task.id}}']">
+                    <label class="form-check-label strikethrough" for="{{task.id}}">
                         {{task.taskDescription}}
+                    </label>
+
+                </div>
+                <div class="col">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary btn btn-light" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            ...
+                        </button>
+                        <ul class="dropdown-menu" style="border:none; background-color: rgba(1, 1, 1, 0);"
+                            aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <!-- Button trigger modal -->
+                                <button (click)="takeIdTaskToDelete(task.id)" type="button" class="btn btn-primary"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Delete
+                                </button>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="col">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary bi bi-three-dots-vertical" type="button"
-                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                ...
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li (click)="takeIdTaskToDelete(task)">
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#staticBackdrop">
-                                        Delete
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-            </div>
+                </div>
+            </li>
         </ul>
     </div>
+</div>
 
 
-    <!-- Button hide after click - to tylko bajer na później - działa! -->
-    <button id="changeToForm" (click)="onChangeClicked()" class="btn text-white"
-        style="background-color: #7749F8; border: 1px solid #7749F8;">Add Task</button>
-
+<div class="container">
     <!-- Modal -->
-    <div *ngFor="let task of tasks$ | async" class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div *ngFor="let task of tasks$ | async" class="modal fade" id="exampleModal" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">DELETE TASK</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">DELETE TASK</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -52,7 +51,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" (click)="onDeleteTaskClicked()">
+                    <button type="button" class="btn btn-primary" (click)="onDeleteTaskClicked(task)">
                         Delete task
                     </button>
                 </div>
