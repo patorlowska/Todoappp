@@ -28,7 +28,9 @@ export class AddTaskComponent {
             return;
         }
         this._addsTaskDto.add({
-            taskDescription: addTask.get('taskDescription')?.value
+            taskDescription: addTask.get('taskDescription')?.value,
+            done: false,
+            created: Date.now(),
         });
         this.addTask.reset();
     }

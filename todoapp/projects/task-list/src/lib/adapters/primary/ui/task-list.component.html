@@ -4,13 +4,11 @@
 
             <li class="row">
                 <div class="col col-8">
-
                     <input class="form-check-input rounded-circle pointer text-decoration-line-through" type="checkbox"
-                        name="flexRadioDefault" [value]="['{{task.id}}']">
-                    <label class="form-check-label striketrough" for="{{task.id}}">
+                        name="flexRadioDefault" [checked]="task.done" (click)="onDoneTaskClicked(task)">
+                    <label class="form-check-label striketrough">
                         {{task.taskDescription}}
                     </label>
-
                 </div>
                 <div class="col col-4 ">
                     <div class="dropdown d-flex justify-content-end">
@@ -22,8 +20,8 @@
                             aria-labelledby="dropdownMenuButton1">
                             <li>
                                 <!-- Button trigger modal -->
-                                <button (click)="takeIdTaskToDelete(task.id)" type="button" class="btn btn-primary"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
                                     Delete
                                 </button>
                             </li>
@@ -51,7 +49,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" (click)="onDeleteTaskClicked(task)">
+                    <button type="button" data-bs-dismiss="modal" class="btn btn-primary"
+                        (click)="onDeleteTaskClicked(task,taskToRemove)">
                         Delete task
                     </button>
                 </div>
