@@ -1,5 +1,5 @@
-<div class="d-inline-flex justify-content-between mr-2">
-    <div *ngFor="let image of image$ | async" class=" ">
-        <img [src]="image.src" [alt]="image.alt" class="img-fluid images-on-homepage m-2 pe-3 ">
+<div class="row">
+    <div *ngFor="let image of image$ | async" class="col-4 ">
+        <img [src]="image.src" [alt]="image.alt" class="img-fluid images-on-homepage ">
     </div>
 </div>
