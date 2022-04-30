@@ -35,24 +35,10 @@ export class AddTaskComponent {
         this.addTask.reset();
     }
 
-    // Guzik bajer - add task po kliknieciu znika - DZIAŁA!! 
     onChangeClicked(): void {
         let buttonOfChange = document.getElementById('buttonOfChange');
         if (buttonOfChange != null) {
             buttonOfChange.style.display = 'block';
-
         }
-
-        // let change = document.getElementById('changeToForm');
-        // if (change != null) {
-        //     change.style.display = 'none';
-        // }
-
-        // let buttonOfReturn = document.getElementById('buttonOfReturn ');
-        // if (buttonOfReturn != null) {
-        //     buttonOfReturn.style.display = 'block';
-
-        // }
-
     }
 }

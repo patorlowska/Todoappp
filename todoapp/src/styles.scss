@@ -2,20 +2,34 @@
 
 @import "node_modules/bootstrap/scss/bootstrap";
 
+nav,
+.dropdown-item:active,
+.dropdown-item:hover,
+.btn-primary,
+#changeToForm {
+    background-color: #7749f8
+}
+
+.btn-add-task,
+.dropdown-item:focus {
+    background-color: #C29FFA;
+}
+
+.btn-primary,
+.dropdown-item:active {
+    color: #fff;
+}
+
 input[type=checkbox]:checked+label.striketrough {
     text-decoration: line-through;
 }
-
-// input[type=text] {
-//     width: 100px;
-// }
 
 textarea {
     height: 100px;
 }
 
-#changeToForm {
-    background-color: #7749F8
+.btn-add-task {
+    border: 1px solid #C29FFA;
 }
 
 .btn-closed {
@@ -23,13 +37,9 @@ textarea {
     border: 1px solid #6C757D
 }
 
-// input[type=checkbox]::after {
-//     background-color: aquamarine;
-// }
-
-// .checked::after {
-//     border: 1px solid blue
-// }
+.btn-primary {
+    border-color: #7749f8;
+}
 
 .pointer:hover {
     cursor: pointer;
@@ -41,38 +51,17 @@ textarea {
     border-color: #212529;
 }
 
-.dropdown-item:focus {
-    background-color: #C29FFA;
+.dropdown-menu-look {
+    border: none;
+    background-color: rgba(1, 1, 1, 0);
+}
+
+.dropdown-item:active {
+    text-decoration: none;
 }
 
 .dropdown-item:hover {
     color: #1e2125;
-    background-color: #7749f8
-}
-
-.dropdown-item:active {
-    color: #fff;
-    text-decoration: none;
-    background-color: #7749f8;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: #7749f8;
-    border-color: #7749f8;
-}
-
-// .checkmark {
-//     font-family: arial;
-//     -ms-transform: scaleX(-1) rotate(-35deg);
-//     /* IE 9 */
-//     -webkit-transform: scaleX(-1) rotate(-35deg);
-//     /* Chrome, Safari, Opera */
-//     transform: scaleX(-1) rotate(-35deg);
-// }
-
-cursor {
-    background-color: white;
 }
 
 .images-on-homepage {
@@ -89,18 +78,3 @@ cursor {
     top: 85px;
     right: 12px;
 }
-
-
-// @media (min-width: 425px) {
-//     .images-on-homepage {
-//         width: 40%;
-//         height: 30%;
-//     }
-// }
-
-// @media (max-width: 768px) {
-//     .images-on-homepage {
-//         width: 80%;
-//         height: 70%;
-//     }
-// }
