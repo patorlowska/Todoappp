@@ -10,22 +10,22 @@
 <div class="collapse" id="collapseExample">
     <div class="card card-body bg-transparent border-0">
         <form [formGroup]="addTask" (ngSubmit)="onAddTaskSubmited(addTask)">
-            <input type="text" class="form-control" formControlName="taskDescription"
-                placeholder="Write your message here">
+            <textarea type="text" class="form-control" formControlName="taskDescription"
+                placeholder="Write your message here:" id="floatingTextarea2"></textarea>
+            <div class="row">
+                <div class="col">
+                    <button id="changeToForm" (click)="onChangeClicked()" class="btn text-white border-0 pe-2 me-2 mt-2"
+                        href="#collapseExample" type="submit" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> Add
+                        Task
 
-            <div class="g-col-3 g-start-2">
-                <button id="changeToForm" (click)="onChangeClicked()" class="btn text-white border-0"
-                    href="#collapseExample" style="background-color: #7749F8;" type="submit" data-bs-toggle="collapse"
-                    data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> Add Task
-
-                </button>
-                <button style="background-color: #FFFFFF; border: 1px solid #6C757D;" class="btn" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false"
-                    aria-controls="collapseExample">
-                    Cancel
-                </button>
+                    </button>
+                    <button class="btn pe-2 me-2 mt-2 btn-closed " type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Cancel
+                    </button>
+                </div>
             </div>
         </form>
-
     </div>
 </div>

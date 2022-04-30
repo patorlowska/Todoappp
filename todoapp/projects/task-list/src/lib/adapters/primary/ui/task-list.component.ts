@@ -49,6 +49,12 @@ export class TaskListComponent {
         }
     }
 
+    onEditTaskClicked(task: TaskDTO): void {
+
+
+
+    }
+
     taskDone: boolean = false;
     taskDelete: boolean = false;
     counter = 0;

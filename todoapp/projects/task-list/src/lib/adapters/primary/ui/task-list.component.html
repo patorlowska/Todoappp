@@ -1,49 +1,34 @@
 <!-- Alert -->
 
-<div *ngIf="taskDone" class="alert alert-success alert-dismissible" role="alert">
+<div *ngIf="taskDone" class="alert alert-success alert-dismissible alert-window " role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+        class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Success:">
+        <path
+            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+    </svg>
     {{counter}} Task complited!
 </div>
-<!-- <div *ngIf="taskDone" class="alert alert-success alert-dismissible" role="alert">
-    {{x}} Task complited!
-</div> -->
-<div *ngIf="taskDelete" class="alert alert-danger" role="alert">
+<div *ngIf="taskDelete" class="alert alert-danger  alert-window" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+        class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Danger:">
+        <path
+            d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+    </svg>
     {{counter}} Task deleted!
 </div>
 
-<!-- <div class="alert alert-' + type + ' alert-dismissible alert-success" data-bs-dismiss="alert" role=" alert"
-    id="liveAlertPlaceholder" (click)="alert(message,type)">
-     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
-<!-- </div> -->
-
-<!-- <div class="alert alert-' + type + ' alert-dismissible" role="alert">
-        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
-            <path
-                d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
-        </symbol>' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert"
-            aria-label="Close"></button>
-    </div> -->
-
-<!-- <div class="alert alert-primary d-flex align-items-center  alert alert-' + type + ' alert-dismissible" role="alert">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-            class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img"
-            aria-label="Warning:">
-            <path
-                d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-        </svg>
-        <div>
-            An example alert with an icon
-        </div>
-    </div> -->
+<!-- TaskList -->
 
 <div class="container container-fluid">
     <div class="form-group" *ngIf="tasks$ | async as task">
         <ul *ngFor="let task of tasks$ | async">
             <li class="row">
                 <div class="col col-8">
-                    <input class="form-check-input rounded-circle pointer text-decoration-line-through" type="checkbox"
-                        name="flexRadioDefault" (click)="onDoneTaskClicked(task)" [checked]="task.done"
-                        (click)="check(task)" (click)="showDoneAlert()">
-                    <label class="form-check-label striketrough">
+                    <input class="form-check-input rounded-circle  pointer text-decoration-line-through "
+                        type="checkbox" name="flexRadioDefault" (click)="onDoneTaskClicked(task)" [checked]="task.done"
+                        (click)="check(task)" (click)="showDoneAlert()" id="checked">
+
+                    <label class="form-check-label striketrough ps-2">
                         {{task.taskDescription}}
                     </label>
                 </div>
@@ -57,9 +42,16 @@
                             aria-labelledby="dropdownMenuButton1">
                             <li>
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
+                                <button type="button" class="dropdown-item btn btn-outline-danger"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     Delete
+                                </button>
+                            </li>
+                            <li>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="dropdown-item btn btn-outline-danger"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Edit
                                 </button>
                             </li>
                         </ul>
@@ -70,9 +62,10 @@
     </div>
 </div>
 
+<!-- Modal -->
 
 <div class="container container-fluid">
-    <!-- Modal -->
+
     <div *ngFor="let task of tasks$ | async" class="modal fade" id="exampleModal" tabindex="-1"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -95,15 +88,31 @@
             </div>
         </div>
     </div>
-</div>
-<!-- 
-<div id="liveAlertPlaceholder"></div>
-<button type="button" class="btn btn-primary" id="liveAlertBtn" (click)="onClickedAlert()">Show live alert</button>
+    <div *ngFor="let task of tasks$ | async" class="modal fade" id="exampleModal" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">EDIT TASK</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
 
-<script>alertPlaceholder = document.getElementById(' liveAlertPlaceholder') var
-        alertTrigger=document.getElementById('liveAlertBtn') function alert(message, type) { var
-        wrapper=document.createElement('div') wrapper.innerHTML='<div class="alert alert-' + type
-        + ' alert-dismissible" role="alert">' + message
-        + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
-        alertPlaceholder.append(wrapper) } if (alertTrigger) { alertTrigger.addEventListener('click', function () {
-        alert('Nice, you triggered this alert message!', 'success' ) }) console.log(alertTrigger) } </script> -->
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">Edit {{task.taskDescription}} to:
+                            </label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button (click)="onEditTaskClicked(task)" type="button" class="btn btn-primary">Save
+                        changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

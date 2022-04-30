@@ -16,7 +16,6 @@ export class HomePage {
         let buttonOfChange = document.getElementById('buttonOfChange');
         if (buttonOfChange != null) {
             buttonOfChange.style.display = 'block';
-
         }
 
         let change = document.getElementById('changeToForm');
