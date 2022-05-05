@@ -25,6 +25,8 @@ export class TaskListComponent {
     taskToRemove: string = '';
     taskDone: boolean = false;
     taskDelete: boolean = false;
+    taskEdit: boolean = false;
+    taskToEdit: string = '';
     counter = 0;
 
     tasks$: Observable<TaskDTO[]> = this._getsAllTaskDto.getAll()
@@ -53,11 +55,17 @@ export class TaskListComponent {
         }
     }
 
-    onEditTaskClicked(task: TaskDTO): void {
+    // onEditTaskClicked(task: TaskDTO, taskDescription: string): void {
 
+    //     console.log(task)
+    //     if (task.taskEdit) {
+    //         this._setsTaskDto.set({ ...task, taskEdit: false });
 
-
-    }
+    //     } else {
+    //         this._setsTaskDto.set({ ...task, taskEdit: true },)
+    //         // this.taskToEdit.valueOf(() => {taskDescription});
+    //     }
+    // }
 
     showDoneAlert(): void {
         this.taskDone = true;
@@ -78,3 +86,4 @@ export class TaskListComponent {
         }
     }
 }
+
