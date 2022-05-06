@@ -3,5 +3,5 @@ export interface TaskDTO {
   readonly taskDescription: string;
   readonly id: string;
   readonly done: boolean;
-  // readonly taskEdit: boolean;
+  readonly taskEdit: boolean;
 }

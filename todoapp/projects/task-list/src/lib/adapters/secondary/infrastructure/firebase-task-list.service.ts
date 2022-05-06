@@ -11,9 +11,12 @@ import { SetsTaskDtoPort } from '../../../application/ports/secondary/sets-task.
 
 @Injectable()
 
-export class FirebaseTaskListService implements AddsTaskDtoPort, GetsAllTaskDtoPort, RemovesTaskDtoPort, SetsTaskDtoPort {
-  constructor(private _client: AngularFirestore) {
-  }
+export class FirebaseTaskListService implements
+  AddsTaskDtoPort,
+  GetsAllTaskDtoPort,
+  RemovesTaskDtoPort,
+  SetsTaskDtoPort {
+  constructor(private _client: AngularFirestore) { }
 
   add(task: Partial<TaskDTO>): void {
     this._client.collection('tasks').add(task);

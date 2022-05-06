@@ -31,7 +31,7 @@ export class AddTaskComponent {
             taskDescription: addTask.get('taskDescription')?.value,
             done: false,
             created: Date.now(),
-            // taskEdit: false,
+            taskEdit: false,
         });
         this.addTask.reset();
     }
