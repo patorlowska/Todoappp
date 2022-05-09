@@ -10,8 +10,8 @@ import { TaskDTO } from '../../../application/ports/secondary/task.dto';
 import { GETS_ALL_TASK_DTO, GetsAllTaskDtoPort } from '../../../application/ports/secondary/gets-all-task.dto-port';
 import { REMOVES_TASK_DTO, RemovesTaskDtoPort } from '../../../application/ports/secondary/removes-task.dto-port';
 import { SETS_TASK_DTO, SetsTaskDtoPort } from '../../../application/ports/secondary/sets-task.dto-port';
-import { AddsTaskDtoPort, ADDS_TASK_DTO } from '../../../application/ports/secondary/adds-task.dto-port';
-import { FormControl, FormGroup } from '@angular/forms';
+// import { AddsTaskDtoPort, ADDS_TASK_DTO } from '../../../application/ports/secondary/adds-task.dto-port';
+// import { FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -25,12 +25,12 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 export class TaskListComponent {
 
-    readonly addTask: FormGroup = new FormGroup({
-        taskDescription: new FormControl()
-    });
-    readonly taskEdited: FormGroup = new FormGroup({
-        textarea: new FormControl()
-    });
+    // readonly addTask: FormGroup = new FormGroup({
+    //     taskDescription: new FormControl()
+    // });
+    // readonly editTask: FormGroup = new FormGroup({
+    //     taskEdit: new FormControl()
+    // });
 
 
     taskToRemove: string = '';
@@ -38,8 +38,8 @@ export class TaskListComponent {
     taskDone: boolean = false;
     counter = 0;
 
-    taskEdit: boolean = false;
-    taskToEdit: string = '';
+    // taskEdit: boolean = false;
+    // taskToEdit: string = '';
 
 
     tasks$: Observable<TaskDTO[]> = this._getsAllTaskDto
@@ -48,9 +48,6 @@ export class TaskListComponent {
             task.sort((a, b) => a.created - b.created))
         );
 
-
-
-
     constructor(
         @Inject(GETS_ALL_TASK_DTO)
         private _getsAllTaskDto: GetsAllTaskDtoPort,
@@ -58,8 +55,8 @@ export class TaskListComponent {
         private _removesTaskDto: RemovesTaskDtoPort,
         @Inject(SETS_TASK_DTO)
         private _setsTaskDto: SetsTaskDtoPort,
-        @Inject(ADDS_TASK_DTO)
-        private _addsTaskDto: AddsTaskDtoPort,
+        // @Inject(ADDS_TASK_DTO)
+        // private _addsTaskDto: AddsTaskDtoPort,
     ) { }
 
     onDeleteTaskClicked(): void {
@@ -78,22 +75,26 @@ export class TaskListComponent {
         }
     }
 
-    getIdToEditTask(taskId: string, taskDescription: string) {
-        console.log(taskId, taskDescription);
-        this.taskToEdit = taskId + taskDescription;
-    }
+    // getIdToEditTask(taskId: string, taskDescription: string) {
+    //     console.log(taskId, taskDescription);
+    //     this.taskToEdit = taskId + taskDescription;
+    // }
 
-    onEditTaskClicked(task: TaskDTO): void {
-        this.taskToEdit = task.taskDescription + '';
-        console.log(this.taskToEdit)
-    }
+    // onEditTaskClicked(: void {
 
-    onAddTaskSubmited(addTask: FormGroup) {
-        this._addsTaskDto.add({
-            taskDescription: addTask.get('taskDescription')?.value,
-        })
-    }
+    //     console.log(task)
+    // }
 
+
+    // onAddTaskSubmited(editTask: FormGroup, task: TaskDTO, addTask: FormGroup): void {
+    //     this.taskToEdit = task.id;
+    //     this._setsTaskDto.set({
+    //         taskDescription: editTask.get('taskDescription' + 'id')?.value,
+    //         id: '',
+
+    //     });
+    //     this._addsTaskDto.add({ taskDescription: addTask.get('taskDescription')?.value, }); console.log()
+    // }
 
     showDoneAlert(): void {
         this.taskDone = true;

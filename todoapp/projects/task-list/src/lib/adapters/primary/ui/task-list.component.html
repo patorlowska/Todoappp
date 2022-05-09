@@ -47,14 +47,15 @@
                                     Delete
                                 </button>
                             </li>
-                            <li>
-                                <!-- Button trigger modal -->
+                            <!-- Button trigger modal -->
+                            <!-- <li>
+                                
                                 <button type="button" class="dropdown-item btn btn-outline-danger"
                                     data-bs-toggle="modal" data-bs-target="#exampleModal-e"
                                     (click)="getIdToEditTask(task.id, task.taskDescription)">
                                     Edit
                                 </button>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -93,7 +94,7 @@
 
     <!-- Modal Edit -->
 
-    <div *ngFor="let task of tasks$ | async" class="modal fade" id="exampleModal-e" tabindex="-1"
+    <!-- <div *ngFor="let task of tasks$ | async" class="modal fade" id="exampleModal-e" tabindex="-1"
         aria-labelledby="exampleModalLabel-e" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -102,24 +103,23 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form [formGroup]="addTask">
+                    <form [formGroup]="editTask">
                         <div class="mb-3">
-                            <label for="message-text" class="col-form-label" [id]="task.id">Edit
+                            <label for="message-text" class="col-form-label">Edit
                                 {{task.taskDescription}} to:
                             </label>
-                            <textarea class="form-control" formControlName="taskDescription"
-                                id="message-text"></textarea>
-                        </div>
-                        <!-- dodanie formControlName ! ale ni eod edycji  -->
-                    </form>
+                            <textarea class="form-control" formControlName="taskEdit" id="message-text"></textarea>
+                        </div> -->
+    <!-- dodanie formControlName ! ale ni eod edycji  -->
+    <!-- </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button (click)="onEditTaskClicked(task)" (click)="onAddTaskSubmited(addTask)" type="button"
+                    <button (click)="onAddTaskSubmited(editTask, task, addTask)" type="button"
                         class="btn btn-primary">Save
                         changes</button>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>

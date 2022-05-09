@@ -77,12 +77,12 @@ textarea {
     justify-content: center;
     top: 85px;
     right: 12px;
-    animation: hideAnimation 0s ease-in 3s;
-    animation-fill-mode: forwards;
+    // animation: hideAnimation 0s ease-in 3s;
+    // animation-fill-mode: forwards;
 }
 
-@keyframes hideAnimation {
-    to {
-        visibility: hidden;
-    }
-}
+// @keyframes hideAnimation {
+//     to {
+//         visibility: hidden;
+//     }
+// }
